@@ -1,6 +1,7 @@
 {
   "node": true,
   "globals": {
+    "location": true,
     "describe": true,
     "it": true,
     "before": true,
