@@ -10,9 +10,9 @@ Node Module Starter
 #### `npm test`
 Runs `mocha` tests located in `/test` once.
 #### `npm run cover`
-Generates a code coverage HTML report in `/coverage`.
+Generates a code coverage HTML report in `/coverage` and starts `run coverage`.
 #### `npm run tdd`
-Runs `mocha` tests with a minimal reporter.
+Runs `mocha` tests with a minimal reporter and watches test files for changes.
 #### `npm run coverage`
-Launches a server and opens the coverage report in your default browser
+Serves coverage HTML report at `127.0.0.1:3000` 
 
