@@ -1,0 +1,32 @@
+{
+  "name": "node-module-starter",
+  "version": "0.0.0",
+  "description": "change-me",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/istanbul test ./node_modules/.bin/_mocha",
+    "cover": "npm test --coverage",
+    "tdd": "./node_modules/.bin/mocha -w -R min",
+    "coverage": "./node_modules/.bin/http-server coverage/lcov-report -sop 3000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thebearingedge/node-module-starter.git"
+  },
+  "author": "Tim Davis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thebearingedge/node-module-starter/issues"
+  },
+  "homepage": "https://github.com/thebearingedge/node-module-starter#readme",
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "chai-as-promised": "^5.1.0",
+    "http-server": "^0.8.0",
+    "istanbul": "^0.3.15",
+    "mocha": "^2.2.5",
+    "proxyquire": "^1.5.0",
+    "sinon": "^1.15.3",
+    "sinon-chai": "^2.8.0"
+  }
+}
