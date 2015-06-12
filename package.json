@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/istanbul test ./node_modules/.bin/_mocha",
-    "cover": "npm test --coverage",
+    "cover": "npm test --coverage && npm run coverage",
     "tdd": "./node_modules/.bin/mocha -w -R min",
-    "coverage": "./node_modules/.bin/http-server coverage/lcov-report -sop 3000"
+    "coverage": "./node_modules/.bin/http-server coverage/lcov-report -sp 3000"
   },
   "repository": {
     "type": "git",
