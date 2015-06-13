@@ -1,6 +1,6 @@
 {
   "name": "mock-location",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Interact with window.location without window",
   "main": "mockLocation.js",
   "scripts": {

@@ -119,6 +119,14 @@ describe('mockLocation', function () {
     });
 
 
+    it('should return "/" if url has no path', function () {
+
+      var location = mockLocation('example.com');
+
+      expect(location.pathname).to.equal('/');
+    });
+
+
     it('should write the url pathname', function () {
 
       location.pathname = '/foo/quux';

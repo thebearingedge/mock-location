@@ -63,7 +63,7 @@ module.exports = function mockLocation(url) {
 
     pathname: {
       get: function () {
-        return location.pathname;
+        return location.pathname || '/';
       },
       set: function (pathname) {
         location.set('pathname', pathname);
