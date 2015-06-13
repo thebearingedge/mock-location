@@ -41,6 +41,26 @@ module.exports = function mockLocation(url) {
     },
 
 
+    host: {
+      get: function () {
+        return location.host;
+      },
+      set: function (host) {
+        location.set('host', host);
+      }
+    },
+
+
+    hostname: {
+      get: function () {
+        return location.hostname;
+      },
+      set: function (hostname) {
+        location.set('hostname', hostname);
+      }
+    },
+
+
     pathname: {
       get: function () {
         return location.pathname;

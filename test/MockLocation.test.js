@@ -12,7 +12,7 @@ describe('mockLocation', function () {
   var location;
 
   beforeEach(function () {
-    location = mockLocation('http://example.com/foo?bar=baz#qux');
+    location = mockLocation('http://example.com:3000/foo?bar=baz#qux');
   });
 
 
@@ -58,7 +58,8 @@ describe('mockLocation', function () {
 
     it('should read the full url', function () {
 
-      expect(location.href).to.equal('http://example.com/foo?bar=baz#qux');
+      expect(location.href)
+        .to.equal('http://example.com:3000/foo?bar=baz#qux');
     });
 
 
@@ -67,6 +68,44 @@ describe('mockLocation', function () {
       location.href = 'http://foo.com';
 
       expect(location.toString()).to.equal('http://foo.com');
+    });
+
+  });
+
+
+  describe('#host', function () {
+
+    it('should read the host of the url', function () {
+
+      expect(location.host).to.equal('example.com:3000');
+    });
+
+
+    it('should write the url host', function () {
+
+      location.host = 'api.example.net:1337';
+
+      expect(location.toString())
+        .to.equal('http://api.example.net:1337/foo?bar=baz#qux');
+    });
+
+  });
+
+
+  describe('#hostname', function () {
+
+    it('should read the hostname of the url', function () {
+
+      expect(location.hostname).to.equal('example.com');
+    });
+
+
+    it('should write the url hostname', function () {
+
+      location.hostname = 'api.example.net';
+
+      expect(location.toString())
+        .to.equal('http://api.example.net:3000/foo?bar=baz#qux');
     });
 
   });
@@ -85,7 +124,7 @@ describe('mockLocation', function () {
       location.pathname = '/foo/quux';
 
       expect(location.toString())
-        .to.equal('http://example.com/foo/quux?bar=baz#qux');
+        .to.equal('http://example.com:3000/foo/quux?bar=baz#qux');
     });
 
   });
@@ -104,7 +143,7 @@ describe('mockLocation', function () {
       location.search = 'corge=grault';
 
       expect(location.toString())
-        .to.equal('http://example.com/foo?corge=grault#qux');
+        .to.equal('http://example.com:3000/foo?corge=grault#qux');
     });
 
   });
