@@ -5,11 +5,23 @@ var parse = require('url-parse');
 
 module.exports = function mockLocation(url) {
 
-  var location = parse(url);
+  var location;
+  var defaultProtocol = 'http:';
+
+  function init(url) {
+
+    location = parse(url);
+    if (!location.protocol) {
+      location.set('protocol', defaultProtocol);
+    }
+
+  }
+
+  init(url);
 
   var api = {
     replace: function (url) {
-      location = parse(url);
+      init(url);
     },
     toString: function () {
       return location.toString();
@@ -27,6 +39,9 @@ module.exports = function mockLocation(url) {
           hash = '#' + hash;
         }
         location.set('hash', hash);
+        if (!location.pathname) {
+          location.set('pathname', '/');
+        }
       }
     },
 
@@ -36,7 +51,7 @@ module.exports = function mockLocation(url) {
         return location.href;
       },
       set: function (href) {
-        api.replace(href);
+        init(href);
       }
     },
 
@@ -66,6 +81,9 @@ module.exports = function mockLocation(url) {
         return location.pathname || '/';
       },
       set: function (pathname) {
+        if (!pathname && location.hash) {
+          pathname = '/';
+        }
         location.set('pathname', pathname);
       }
     },

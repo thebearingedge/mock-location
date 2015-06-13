@@ -38,9 +38,10 @@ describe('mockLocation', function () {
 
     it('should set the hash portion of the url', function () {
 
-      location.hash = '#quux';
+      location.hash = '#corge';
 
-      expect(location.hash).to.equal('#quux');
+      expect(location.href)
+        .to.equal('http://example.com:3000/foo?bar=baz#corge');
     });
 
 
@@ -68,6 +69,21 @@ describe('mockLocation', function () {
       location.href = 'http://foo.com';
 
       expect(location.toString()).to.equal('http://foo.com');
+    });
+
+
+    it('should delimit hostname and hash with "/"', function () {
+      location = mockLocation('www.example.com');
+      location.hash = '#foo';
+
+      expect(location.href).to.equal('http://www.example.com/#foo');
+    });
+
+
+    it('should always include the protocol', function () {
+      location = mockLocation('www.example.com');
+
+      expect(location.href).to.equal('http://www.example.com');
     });
 
   });
@@ -133,6 +149,16 @@ describe('mockLocation', function () {
 
       expect(location.toString())
         .to.equal('http://example.com:3000/foo/quux?bar=baz#qux');
+    });
+
+
+    it('should override to "/" if there is a hash', function () {
+      var location = mockLocation('www.example.com/#foo');
+
+      location.pathname = '';
+
+      expect(location.pathname).to.equal('/');
+      expect(location.toString()).to.equal('http://www.example.com/#foo');
     });
 
   });
