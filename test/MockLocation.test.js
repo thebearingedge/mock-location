@@ -66,8 +66,45 @@ describe('mockLocation', function () {
 
       location.href = 'http://foo.com';
 
-      expect(location.href).to.equal('http://foo.com');
-      expect(location.hash).to.equal('');
+      expect(location.toString()).to.equal('http://foo.com');
+    });
+
+  });
+
+
+  describe('#pathname', function () {
+
+    it('should read the url pathname', function () {
+
+      expect(location.pathname).to.equal('/foo');
+    });
+
+
+    it('should write the url pathname', function () {
+
+      location.pathname = '/foo/quux';
+
+      expect(location.toString())
+        .to.equal('http://example.com/foo/quux?bar=baz#qux');
+    });
+
+  });
+
+
+  describe('#search', function () {
+
+    it('should read the url search', function () {
+
+      expect(location.search).to.equal('?bar=baz');
+    });
+
+
+    it('should write the url search', function () {
+
+      location.search = 'corge=grault';
+
+      expect(location.toString())
+        .to.equal('http://example.com/foo?corge=grault#qux');
     });
 
   });

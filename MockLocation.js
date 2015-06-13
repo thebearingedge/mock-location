@@ -38,6 +38,26 @@ module.exports = function mockLocation(url) {
       set: function (href) {
         api.replace(href);
       }
+    },
+
+
+    pathname: {
+      get: function () {
+        return location.pathname;
+      },
+      set: function (pathname) {
+        location.set('pathname', pathname);
+      }
+    },
+
+
+    search: {
+      get: function () {
+        return location.query;
+      },
+      set: function (search) {
+        location.set('query', search);
+      }
     }
 
   });
