@@ -89,6 +89,16 @@ module.exports = function mockLocation(url) {
     },
 
 
+    protocol: {
+      get: function () {
+        return location.protocol;
+      },
+      set: function (protocol) {
+        location.set('protocol', protocol);
+      }
+    },
+
+
     search: {
       get: function () {
         return location.query;
