@@ -93,8 +93,10 @@ module.exports = function mockLocation(url) {
       get: function () {
         return location.protocol;
       },
-      set: function (protocol) {
-        location.set('protocol', protocol);
+	  set: function (protocol) {
+		// ensure colon is present
+		var colon = str[str.length-1] === ':' ? '' : ':';
+        location.set('protocol', protocol+colon);
       }
     },
 
