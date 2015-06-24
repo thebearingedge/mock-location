@@ -88,14 +88,22 @@ module.exports = function mockLocation(url) {
       }
     },
 
+    port: {
+      get: function () {
+        return location.port;
+      },
+      set: function (port) {
+        location.set('port', port);
+      }
+    },
 
     protocol: {
       get: function () {
         return location.protocol;
       },
-	  set: function (protocol) {
-		// ensure colon is present
-		var colon = str[str.length-1] === ':' ? '' : ':';
+      set: function (protocol) {
+        // ensure colon is present
+        var colon = protocol[protocol.length-1] === ':' ? '' : ':';
         location.set('protocol', protocol+colon);
       }
     },
