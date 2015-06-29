@@ -182,4 +182,51 @@ describe('mockLocation', function () {
 
   });
 
+
+  describe('#protocol', function () {
+
+    it('should read the url protocol', function () {
+
+      expect(location.protocol).to.equal('http:');
+    });
+
+
+    it('should set the url protocol', function () {
+
+      location.protocol = 'https:';
+
+      expect(location.href)
+        .to.equal('https://example.com:3000/foo?bar=baz#qux');
+    });
+
+
+    it('should permit omission of ":"', function () {
+
+      location.protocol = 'https';
+
+      expect(location.href)
+        .to.equal('https://example.com:3000/foo?bar=baz#qux');
+    });
+
+  });
+
+
+  describe('#port', function () {
+
+    it('should read the url port number', function () {
+
+      expect(location.port).to.equal('3000');
+    });
+
+
+    it('should set the url port', function () {
+
+      location.port = 8080;
+
+      expect(location.href)
+        .to.equal('http://example.com:8080/foo?bar=baz#qux');
+    });
+
+  });
+
 });
