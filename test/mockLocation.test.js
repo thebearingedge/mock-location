@@ -125,7 +125,15 @@ describe('mockLocation', function () {
     });
 
   });
+  
+  describe('#origin', function () {
 
+    it('should read the origin of the url', function () {
+
+      expect(location.origin).to.equal('http://example.com:3000');
+    });
+
+  });
 
   describe('#pathname', function () {
 
