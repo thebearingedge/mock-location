@@ -75,6 +75,14 @@ module.exports = function mockLocation(url) {
       }
     },
 
+    origin: {
+      get: function () {
+        return location.protocol + '//' + location.host;
+      },
+      set: function (origin) {
+        return origin;
+      }
+    },
 
     pathname: {
       get: function () {

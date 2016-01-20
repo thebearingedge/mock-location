@@ -126,6 +126,21 @@ describe('mockLocation', function () {
 
   });
 
+  describe('#origin', function () {
+
+    it('should read the origin of the url', function () {
+
+      expect(location.origin).to.equal('http://example.com:3000');
+    });
+
+    it('should not change the url origin', function () {
+
+      location.origin = 'ftp://foo.bar.baz';
+
+      expect(location.origin).to.equal('http://example.com:3000');
+    });
+
+  });
 
   describe('#pathname', function () {
 
