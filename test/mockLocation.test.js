@@ -133,6 +133,13 @@ describe('mockLocation', function () {
       expect(location.origin).to.equal('http://example.com:3000');
     });
 
+    it('should not change the url origin', function () {
+
+      location.origin = 'ftp://foo.bar.baz';
+
+      expect(location.origin).to.equal('http://example.com:3000');
+    });
+
   });
 
   describe('#pathname', function () {
@@ -233,22 +240,6 @@ describe('mockLocation', function () {
 
       expect(location.href)
         .to.equal('http://example.com:8080/foo?bar=baz#qux');
-    });
-
-  });
-
-  describe('#origin', function () {
-
-    it('should read the url origin', function () {
-
-      expect(location.origin).to.equal('http://example.com:3000');
-    });
-
-    it('should not change the url origin', function () {
-
-      location.origin = 'ftp://foo.bar.baz';
-
-      expect(location.origin).to.equal('http://example.com:3000');
     });
 
   });
